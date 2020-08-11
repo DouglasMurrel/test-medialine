@@ -35,3 +35,4 @@ tests/_support/_generated
 /config/db_local.php
 composer.bat
 php.bat
+/web/index.php
