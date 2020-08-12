@@ -7,6 +7,7 @@ use Yii;
 use yii\db\ActiveRecord;
 use creocoder\nestedsets\NestedSetsBehavior;
 use app\components\TagQuery;
+use yii\helpers\ArrayHelper;
 
 /**
  * Class Tag
@@ -101,5 +102,24 @@ class Tag extends ActiveRecord
             ->innerJoin('news_tag_rel r','n.id=r.news_id')
             ->where('r.tag_id in ('.implode(',',$idList).')');
         return $newsListQuery;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAllChildren(){
+        $tagList = $this->children()->all();
+        $tagList = ArrayHelper::getColumn($tagList, function ($element) {
+            return ['id'=>$element['id'],'name'=>$element['name']];
+        });
+        return $tagList;
+    }
+
+    /**
+     * @param $name
+     * @return array|ActiveRecord|null
+     */
+    public static function getTagByName($name){
+        return Tag::find()->where(['like','name',$name,false])->one();
     }
 }

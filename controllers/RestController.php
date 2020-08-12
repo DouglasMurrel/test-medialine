@@ -18,8 +18,8 @@ class RestController extends Controller
         return parent::beforeAction($action);
     }
 
-    public function actionGetNews($id){
-        $tag = Tag::findOne($id);
+    public function actionGetNews($name){
+        $tag = Tag::getTagByName($name);
         if($tag == null){
             return['error'=>'Рубрика не найдена'];
         }else{
@@ -28,16 +28,12 @@ class RestController extends Controller
         }
     }
 
-    public function actionGetTags($id){
-        $tag = Tag::findOne($id);
+    public function actionGetTags($name){
+        $tag = Tag::getTagByName($name);
         if($tag == null){
             return['error'=>'Рубрика не найдена'];
         }else{
-            $tagList = $tag->children()->all();
-            $tagList = ArrayHelper::getColumn($tagList, function ($element) {
-                return ['id'=>$element['id'],'name'=>$element['name']];
-            });
-            return $tagList;
+            return $tag->getAllChildren();
         }
     }
 }
