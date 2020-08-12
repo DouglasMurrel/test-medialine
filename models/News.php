@@ -14,6 +14,8 @@ use Yii;
  */
 class News extends \yii\db\ActiveRecord
 {
+    const PAGE_SIZE = 20;
+
     /**
      * {@inheritdoc}
      */

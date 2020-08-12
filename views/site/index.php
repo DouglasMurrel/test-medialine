@@ -4,6 +4,7 @@
 
 use yii\bootstrap4\ActiveForm;
 use yii\helpers\Url;
+use yii\widgets\Pjax;
 
 $this->title = 'My Yii Application';
 ?>
