@@ -51,6 +51,8 @@ $config = [
                 'index'=>'site/index',
                 'login'=>'site/login',
                 'logout'=>'site/logout',
+                '<id:\d+>/news'=>'rest/get-news',
+                '<id:\d+>/tags'=>'rest/get-tags',
             ],
         ],
     ],
