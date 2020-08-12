@@ -42,6 +42,7 @@ class News extends \yii\db\ActiveRecord
             'id' => 'ID',
             'title' => 'Заголовок',
             'content' => 'Текст',
+            'tagList' => 'Рубрики',
         ];
     }
 
@@ -55,5 +56,14 @@ class News extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Tag::className(), ['id' => 'tag_id'])
             ->viaTable('news_tag_rel', ['news_id' => 'id']);
+    }
+
+    public function getTagList(){
+        $tags = $this->tags;
+        $result = [];
+        foreach($tags as $tag){
+            $result[] = $tag->name;
+        }
+        return implode(', ',$result);
     }
 }

@@ -57,7 +57,8 @@ $config = [
         ],
     ],
     'params' => $params,
-    'name' => 'Тестовое задание'
+    'name' => 'Тестовое задание',
+    'language' => 'ru-RU',
 ];
 
 if (YII_ENV_DEV) {

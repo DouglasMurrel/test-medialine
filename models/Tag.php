@@ -98,6 +98,7 @@ class Tag extends ActiveRecord
         $idList = $this->getAllChildrenIds();
         $newsListQuery = News::find()
             ->select('n.*')
+            ->distinct()
             ->from('news n')
             ->innerJoin('news_tag_rel r','n.id=r.news_id')
             ->where('r.tag_id in ('.implode(',',$idList).')');
