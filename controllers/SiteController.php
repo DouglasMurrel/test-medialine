@@ -50,7 +50,9 @@ class SiteController extends Controller
                 $dataProvider = new ActiveDataProvider([
                     'query' => $tag->getAllNews(),
                     'sort' => false,
-                    'pagination'=>500,
+                    'pagination' => [
+                        'pageSize' => 500,
+                    ],
                 ]);
                 return $this->renderAjax('gridNews', [
                     'dataProvider' => $dataProvider,
