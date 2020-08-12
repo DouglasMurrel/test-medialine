@@ -49,6 +49,8 @@ class SiteController extends Controller
             }else{
                 $dataProvider = new ActiveDataProvider([
                     'query' => $tag->getAllNews(),
+                    'sort' => false,
+                    'pagination'=>500,
                 ]);
                 return $this->renderAjax('gridNews', [
                     'dataProvider' => $dataProvider,
