@@ -13,6 +13,7 @@ class NewsController extends Controller
 {
     public function actionFillDb()
     {
+        //test
         Yii::$app->db->createCommand("SET foreign_key_checks = 0")->execute();
         Yii::$app->db->createCommand()->truncateTable('tag')->execute();
         Yii::$app->db->createCommand()->truncateTable('news')->execute();
